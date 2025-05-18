@@ -1,6 +1,7 @@
 package main;
 
 import UI.Healthbar;
+import UI.UI;
 import entity.Player;
 import object.SuperObject;
 import tile.TileManager;
@@ -35,6 +36,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     TileManager tileM = new TileManager(this);
     KeyHandler keyH = new KeyHandler();
+    public UI ui = new UI(this);
     Thread gameThread;
     public CollisionChecker cChecker = new CollisionChecker(this);
     public AssetSetter aSetter = new AssetSetter(this);
@@ -131,6 +133,9 @@ public class GamePanel extends JPanel implements Runnable {
 
         //Healthbar
         healthbar.draw(g2);
+
+        //Keys
+        ui.draw(g2);
 
         g2.dispose();
 

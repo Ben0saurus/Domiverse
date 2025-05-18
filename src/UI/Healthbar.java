@@ -1,5 +1,7 @@
 package UI;
 
+import sound.SoundPlayer;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -23,6 +25,8 @@ public class Healthbar {
         image = getHealthbarImage();
 
         if (health <= 0) {
+            SoundPlayer soundPlayer = new SoundPlayer("/sounds/deathSound.wav");
+            soundPlayer.play();
             SwingUtilities.invokeLater(() -> {
                 JFrame currentWindow = main.Main.window;
                 currentWindow.dispose(); // Close the game window

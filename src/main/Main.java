@@ -21,7 +21,7 @@ public class Main {
         }
 
         // Start music
-        music = new SoundPlayer("resources/sounds/Soundtrack2.wav");
+        SoundPlayer music = new SoundPlayer("/sounds/Soundtrack2.wav");
         music.loop();
 
         // Window setup
@@ -42,7 +42,7 @@ public class Main {
 
     public static void restartGame() {
         if (music != null) {
-            music.stop(); // Ensure stop() exists in SoundPlayer
+            music.stop();
             music = null;
         }
         window.dispose();

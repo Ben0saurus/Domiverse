@@ -2,8 +2,11 @@ package entity;
 
 import main.GamePanel;
 import main.KeyHandler;
+import sound.SoundPlayer;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -15,7 +18,7 @@ public class Player extends Entity {
 
     public final int screenX;
     public final int screenY;
-    int hasKey = 0;
+    public int hasKey = 0;
     public int lifes = 3;
 
 
@@ -159,21 +162,30 @@ public class Player extends Entity {
                     break;
                 case "Cigarette":
                     lifes--;
+                    SoundPlayer cigarettePlayer = new SoundPlayer("/sounds/damageSound.wav");
+                    cigarettePlayer.play();
                     gp.getHealthbar().setHealth(lifes);
                     gp.obj[i] = null;
                     break;
                 case "Vape":
                     lifes--;
+                    SoundPlayer vapePlayer = new SoundPlayer("/sounds/damageSound.wav");
+                    vapePlayer.play();
                     gp.getHealthbar().setHealth(lifes);
                     gp.obj[i] = null;
                     break;
                 case "Coke":
                     lifes--;
+                    SoundPlayer cokePlayer = new SoundPlayer("/sounds/damageSound.wav");
+                    cokePlayer.play();
+                    speed += 2;
                     gp.getHealthbar().setHealth(lifes);
                     gp.obj[i] = null;
                     break;
                 case "Heroine":
                     lifes--;
+                    SoundPlayer heroinePlayer = new SoundPlayer("/sounds/damageSound.wav");
+                    heroinePlayer.play();
                     gp.getHealthbar().setHealth(lifes);
                     gp.obj[i] = null;
                     break;

@@ -10,13 +10,11 @@ public class SoundPlayer {
 
     public SoundPlayer(String filePath) {
         try {
-            // Load the audio file
-            AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File(filePath));
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(
+                    getClass().getResource(filePath)
+            );
 
-            // Get a clip resource
             clip = AudioSystem.getClip();
-
-            // Open the audio stream
             clip.open(audioStream);
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
