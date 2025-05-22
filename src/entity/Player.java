@@ -150,42 +150,66 @@ public class Player extends Entity {
             switch (objectName) {
                 case "Key":
                     hasKey++;
+                    SoundPlayer keyPlayer = new SoundPlayer("/sounds/keySound.wav");
+                    keyPlayer.play();
                     gp.obj[i] = null;
                     break;
                 case "Door":
                     if (hasKey > 0) {
+                        SoundPlayer doorPlayer = new SoundPlayer("/sounds/doorSound.wav");
+                        doorPlayer.play();
                         gp.obj[i] = null;
                         hasKey--;
                     }
                     break;
                 case "Chest":
+                    if(lifes < 3) {
+                        lifes++;
+                    } else {
+                        lifes--;
+                    }
+                    gp.getHealthbar().setHealth(lifes);
+                    SoundPlayer chestPlayer = new SoundPlayer("/sounds/chestSound.wav");
+                    chestPlayer.play();
+                    gp.obj[i] = null;
                     break;
                 case "Cigarette":
                     lifes--;
-                    SoundPlayer cigarettePlayer = new SoundPlayer("/sounds/damageSound.wav");
-                    cigarettePlayer.play();
+                    if (lifes != 0) {
+                        SoundPlayer cigarettePlayer = new SoundPlayer("/sounds/damageSound.wav");
+                        cigarettePlayer.play();
+                        speed += 2;
+                    }
                     gp.getHealthbar().setHealth(lifes);
                     gp.obj[i] = null;
                     break;
                 case "Vape":
                     lifes--;
-                    SoundPlayer vapePlayer = new SoundPlayer("/sounds/damageSound.wav");
-                    vapePlayer.play();
+                    if (lifes != 0) {
+                        SoundPlayer vapePlayer = new SoundPlayer("/sounds/damageSound.wav");
+                        vapePlayer.play();
+                        speed += 2;
+                    }
                     gp.getHealthbar().setHealth(lifes);
                     gp.obj[i] = null;
                     break;
                 case "Coke":
                     lifes--;
-                    SoundPlayer cokePlayer = new SoundPlayer("/sounds/damageSound.wav");
-                    cokePlayer.play();
-                    speed += 2;
+                    if (lifes != 0) {
+                        SoundPlayer cokePlayer = new SoundPlayer("/sounds/damageSound.wav");
+                        cokePlayer.play();
+                        speed += 2;
+                    }
                     gp.getHealthbar().setHealth(lifes);
                     gp.obj[i] = null;
                     break;
                 case "Heroine":
                     lifes--;
-                    SoundPlayer heroinePlayer = new SoundPlayer("/sounds/damageSound.wav");
-                    heroinePlayer.play();
+                    if (lifes != 0) {
+                        SoundPlayer heroinePlayer = new SoundPlayer("/sounds/damageSound.wav");
+                        heroinePlayer.play();
+                        speed += 2;
+                    }
                     gp.getHealthbar().setHealth(lifes);
                     gp.obj[i] = null;
                     break;

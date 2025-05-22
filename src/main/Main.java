@@ -21,8 +21,9 @@ public class Main {
         }
 
         // Start music
-        SoundPlayer music = new SoundPlayer("/sounds/Soundtrack2.wav");
+        music = new SoundPlayer("/sounds/soundtrack2.wav");
         music.loop();
+        music.setVolume(0.1f);
 
         // Window setup
         window = new JFrame();
