@@ -153,20 +153,26 @@ public class Player extends Entity {
                     SoundPlayer keyPlayer = new SoundPlayer("/sounds/keySound.wav");
                     keyPlayer.play();
                     gp.obj[i] = null;
+                    gp.ui.showMessage("You picked up a Key!");
                     break;
                 case "Door":
                     if (hasKey > 0) {
                         SoundPlayer doorPlayer = new SoundPlayer("/sounds/doorSound.wav");
                         doorPlayer.play();
+                        gp.ui.showMessage("You just opened a door!");
                         gp.obj[i] = null;
                         hasKey--;
+                    } else {
+                        gp.ui.showMessage("You need a Key to open this Door!");
                     }
                     break;
                 case "Chest":
                     if(lifes < 3) {
                         lifes++;
+                        gp.ui.showMessage("You opened a chest and got a heart back!");
                     } else {
                         lifes--;
+                        gp.ui.showMessage("You opened a chest and lost a heart!");
                     }
                     gp.getHealthbar().setHealth(lifes);
                     SoundPlayer chestPlayer = new SoundPlayer("/sounds/chestSound.wav");
@@ -175,6 +181,7 @@ public class Player extends Entity {
                     break;
                 case "Cigarette":
                     lifes--;
+                    gp.ui.showMessage("You just smoked a Cigarette! Congrats!");
                     if (lifes != 0) {
                         SoundPlayer cigarettePlayer = new SoundPlayer("/sounds/damageSound.wav");
                         cigarettePlayer.play();
@@ -185,6 +192,7 @@ public class Player extends Entity {
                     break;
                 case "Vape":
                     lifes--;
+                    gp.ui.showMessage("You just smoked a Vape! Congrats!");
                     if (lifes != 0) {
                         SoundPlayer vapePlayer = new SoundPlayer("/sounds/damageSound.wav");
                         vapePlayer.play();
@@ -195,6 +203,7 @@ public class Player extends Entity {
                     break;
                 case "Coke":
                     lifes--;
+                    gp.ui.showMessage("You just consumed some Cocaine! Congrats!");
                     if (lifes != 0) {
                         SoundPlayer cokePlayer = new SoundPlayer("/sounds/damageSound.wav");
                         cokePlayer.play();
@@ -205,6 +214,7 @@ public class Player extends Entity {
                     break;
                 case "Heroine":
                     lifes--;
+                    gp.ui.showMessage("You just consumed some Heroine! Congrats!");
                     if (lifes != 0) {
                         SoundPlayer heroinePlayer = new SoundPlayer("/sounds/damageSound.wav");
                         heroinePlayer.play();

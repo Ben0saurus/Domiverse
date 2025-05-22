@@ -34,7 +34,7 @@ public class AssetSetter {
         gp.obj[4].worldX = 8 * gp.tileSize;
         gp.obj[4].worldY = 28 * gp.tileSize;
 
-        gp.obj[5] = new OBJ_Vape();
+        gp.obj[5] = new OBJ_Door();
         gp.obj[5].worldX = 12 * gp.tileSize;
         gp.obj[5].worldY = 22 * gp.tileSize;
 
