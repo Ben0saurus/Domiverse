@@ -5,6 +5,7 @@ import object.OBJ_Key;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.text.DecimalFormat;
 
 public class UI {
 
@@ -14,6 +15,9 @@ public class UI {
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
+
+    double playTime;
+    DecimalFormat dFormat = new DecimalFormat("#0.00");
 
     public UI(GamePanel gp) {
 
@@ -38,6 +42,10 @@ public class UI {
         g2.setColor(Color.WHITE);
         g2.drawImage(keyImage, 600, 10, gp.tileSize, gp.tileSize, null);
         g2.drawString("x " + gp.player.hasKey, 650, 50);
+
+        //Playtime
+        playTime += (double) 1/60;
+        g2.drawString(dFormat.format(playTime), 650, gp.tileSize*11);
 
         //Message
         if (messageOn == true) {
